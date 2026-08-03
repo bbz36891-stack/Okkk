@@ -1,11 +1,11 @@
 import { memo } from "react";
 import { extractTeamData } from "../lib/highlights";
-import { hlSafeLogo, onImgFallback, onImgHide } from "../lib/utils";
+import { safeUrl, onImgFallback } from "../lib/utils";
+import { FALLBACK_LOGO } from "../lib/constants";
 import type { HighlightMatch } from "../types";
 
 /**
- * Highlights card — images intentionally DO NOT set referrerPolicy,
- * they are served through the dedicated highlights image proxy.
+ * Highlights card
  */
 function HighlightCardBase({
   match,
@@ -18,7 +18,7 @@ function HighlightCardBase({
 
   /* Layout A — generic / missing team data: single cover banner */
   if (t.isGeneric) {
-    const cover = t.cover ? hlSafeLogo(t.cover) : "";
+    const cover = t.cover ? safeUrl(t.cover) : FALLBACK_LOGO;
     return (
       <div className="hl-card hl-card-generic" onClick={onOpen}>
         {cover ? (
@@ -28,7 +28,7 @@ function HighlightCardBase({
             alt={t.title || t.competition}
             loading="lazy"
             decoding="async"
-            onError={onImgHide}
+            onError={onImgFallback}
           />
         ) : null}
         <div className="hl-generic-body">
@@ -51,16 +51,14 @@ function HighlightCardBase({
     <div className="hl-card" onClick={onOpen}>
       <div className="mc-header">
         <div className="mc-header-left">
-          {t.cover ? (
-            <img
-              className="mc-league-logo"
-              src={hlSafeLogo(t.cover)}
-              alt={t.competition}
-              loading="lazy"
-              decoding="async"
-              onError={onImgHide}
-            />
-          ) : null}
+          <img
+            className="mc-league-logo"
+            src={safeUrl(t.cover) || FALLBACK_LOGO}
+            alt={t.competition}
+            loading="lazy"
+            decoding="async"
+            onError={onImgFallback}
+          />
           <span className="mc-league-text">{t.competition || t.title}</span>
         </div>
         <span className="mc-timer-top" style={{ color: "#00f0ff" }}>
@@ -72,7 +70,7 @@ function HighlightCardBase({
           {t.homeLogo ? (
             <img
               className="mc-logo"
-              src={t.homeLogo}
+              src={safeUrl(t.homeLogo) || FALLBACK_LOGO}
               alt={t.homeName}
               loading="lazy"
               decoding="async"
@@ -103,7 +101,7 @@ function HighlightCardBase({
           {t.awayLogo ? (
             <img
               className="mc-logo"
-              src={t.awayLogo}
+              src={safeUrl(t.awayLogo) || FALLBACK_LOGO}
               alt={t.awayName}
               loading="lazy"
               decoding="async"
