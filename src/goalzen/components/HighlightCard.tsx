@@ -54,7 +54,7 @@ function HighlightCardBase({
           {t.cover ? (
             <img
               className="mc-league-logo"
-              src={hlSafeLogo(t.cover)}
+              src={hlSafeLogo(match.competition_cover || t.cover)}
               alt={t.competition}
               loading="lazy"
               decoding="async"
