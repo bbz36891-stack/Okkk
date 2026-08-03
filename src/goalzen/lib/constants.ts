@@ -5,7 +5,7 @@ export const HIGHLIGHTS_API = "https://highlights.bbz36891.workers.dev/api/video
 
 export const LOGIN_API = "https://login.goalzen.site";
 
-export const LOGO_PROXY = "https://logo.goalzen.site/proxy/logo?url=";
+export const LOGO_PROXY = "https://api-logo.goalzen.site/proxy/logo?url=";
 
 export const HLS_PLAYER = "https://ayvspop.github.io/HLS-PLAYER/?play=";
 
