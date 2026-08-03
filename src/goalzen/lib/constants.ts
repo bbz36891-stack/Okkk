@@ -11,7 +11,7 @@ export const HLS_PLAYER = "https://ayvspop.github.io/HLS-PLAYER/?play=";
 
 export const AUTH_TOKEN_QS = "ivan-flux-0077";
 
-export const FALLBACK_LOGO = "https://i.ibb.co/cKvJHYbp/1000390744.png";
+export const FALLBACK_LOGO = "https://i.ibb.co/1Yh8PdLH/1000459066.jpg";
 
 
 export const SESSION_KEY = "fusion_vip_session";
