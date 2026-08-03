@@ -20,6 +20,7 @@ import type {
   SportsChannel,
   SportsPlayerState,
   StatusFilter,
+  StreamLink,
   ViewName,
   VipChannel,
 } from "./types";
@@ -215,9 +216,20 @@ export function useGoalzenStore() {
     });
   }, []);
 
-  const playVipChannel = useCallback((ch: VipChannel) => {
+  const playVipChannel = useCallback((ch: VipChannel, linkIdx = 0) => {
     const chName = ch.Name || ch.name || "VIP Channel";
-    const iframeLink = ch.Stream_url || ch.Stream_link || ch.link || "";
+    const rawLinks = (ch.stream_links || (ch as any).links || []) as any[];
+    const links: StreamLink[] = rawLinks.map((l: any) => ({
+      name: l.name || l.title || "Server",
+      link: l.link || l.Stream_url || l.Stream_link || "",
+    }));
+
+    const activeLink = links[linkIdx] || {
+      name: "Server",
+      link: ch.Stream_url || ch.Stream_link || ch.link || "",
+    };
+
+    const iframeLink = activeLink.link;
     if (!iframeLink) {
       alert("Stream currently unavailable for " + chName);
       return;
@@ -227,9 +239,9 @@ export function useGoalzenStore() {
       triggerAdIfNeeded();
       return {
         iframeHtml: iframeLink,
-        title: `NOW PLAYING: ${chName} (VIP)`,
-        links: [],
-        activeLinkIdx: 0,
+        title: `NOW PLAYING: ${chName} (${activeLink.name})`,
+        links: links,
+        activeLinkIdx: linkIdx,
         context: "vip",
       };
     });
