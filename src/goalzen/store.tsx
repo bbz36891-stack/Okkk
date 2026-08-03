@@ -85,6 +85,7 @@ export function useGoalzenStore() {
     (next: ViewName) => {
       setView(next);
       if (next === "sports") void data.loadSportsChannels();
+      if (next === "vip") void data.loadSportsChannels();
       if (next === "highlights") highlights.ensureLoaded();
     },
     [data, highlights],
@@ -186,16 +187,17 @@ export function useGoalzenStore() {
       const link = ch.stream_links[linkIdx];
       if (!link) return;
       setLinkModalChannel(null);
+      const isVip = Boolean((ch as any)?.isVip || (ch as any)?.Name || (ch as any)?.Logo_url);
       setSportsPlayer((prev) => {
         // already playing this exact stream: do not reload the player
-        if (prev && prev.context === "sports" && prev.iframeHtml === link.link) return prev;
+        if (prev && prev.iframeHtml === link.link) return prev;
         triggerAdIfNeeded();
         return {
           iframeHtml: link.link,
           title: `NOW PLAYING: ${ch.name} (${link.name})`,
           links: ch.stream_links,
           activeLinkIdx: linkIdx,
-          context: "sports",
+          context: isVip ? "vip" : "sports",
         };
       });
       window.scrollTo(0, 0);
