@@ -3,7 +3,7 @@ import { useStore } from "../store";
 import { ChannelCard } from "./ChannelCard";
 
 export function VipChannelView({ hidden }: { hidden?: boolean }) {
-  const { vipList, vip, playVipChannel } = useStore();
+  const { vipList, vip, playVipChannel, openLinks } = useStore();
   const [query, setQuery] = useState("");
 
   const visible = useMemo(() => {
@@ -17,6 +17,22 @@ export function VipChannelView({ hidden }: { hidden?: boolean }) {
 
   /* VIP content stays hidden whenever there is no verified session */
   if (!vip.session) return null;
+
+  const handleChannelClick = (ch: any) => {
+    const rawLinks = ch.stream_links || ch.links || [];
+    if (Array.isArray(rawLinks) && rawLinks.length > 0) {
+      openLinks({
+        name: ch.Name || ch.name || "VIP Channel",
+        logo: ch.Logo_url,
+        stream_links: rawLinks.map((l: any) => ({
+          name: l.name || l.title || "Server",
+          link: l.link || l.Stream_url || l.Stream_link || "",
+        })),
+      });
+    } else {
+      playVipChannel(ch);
+    }
+  };
 
   return (
     <div
@@ -113,7 +129,7 @@ export function VipChannelView({ hidden }: { hidden?: boolean }) {
               key={`${ch.Name || ch.name}-${idx}`}
               name={ch.Name || ch.name || "VIP Channel"}
               logo={ch.Logo_url}
-              onClick={() => playVipChannel(ch)}
+              onClick={() => handleChannelClick(ch)}
             />
           ))
         )}
