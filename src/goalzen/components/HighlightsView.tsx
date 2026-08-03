@@ -50,7 +50,7 @@ export function HighlightsView({ hidden }: { hidden?: boolean }) {
         <input
           type="text"
           id="highlights-search-input"
-          placeholder="Search team or league (e.g. Real Madrid, La Liga)..."
+          placeholder="Search team or league name"
           value={query}
           onChange={(e) => setQuery(e.target.value)}
           onKeyDown={(e) => {
