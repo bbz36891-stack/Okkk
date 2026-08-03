@@ -94,12 +94,12 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       },
       { property: "og:type", content: "website" },
       { property: "og:site_name", content: "Goalzen" },
-      { property: "og:url", content: "https://goalzen-highlights-hub.lovable.app/" },
+      { property: "og:url", content: "https://www.goalzen.site" },
       { name: "twitter:card", content: "summary_large_image" },
       { name: "twitter:title", content: "Goalzen — Live Sports Streams, Scores & Highlights" },
       { name: "twitter:description", content: "Goalzen brings you free live sports streams — Premier League, La Liga, UEFA Champions League, IPL cricket and more — with real-time scores, schedules, sports channels and instant match highlights." },
-      { property: "og:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/59aa198f-badf-4020-a9fc-e591ee3990c0/id-preview-d4df930a--ba6e047a-6a4e-4ef0-94f0-476752f4a10d.lovable.app-1785742994337.png" },
-      { name: "twitter:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/59aa198f-badf-4020-a9fc-e591ee3990c0/id-preview-d4df930a--ba6e047a-6a4e-4ef0-94f0-476752f4a10d.lovable.app-1785742994337.png" },
+      { property: "og:image", content: "https://i.ibb.co/1Yh8PdLH/1000459066.png" },
+      { name: "twitter:image", content: "https://i.ibb.co/1Yh8PdLH/1000459066.png" },
     ],
     links: [
       {
@@ -114,7 +114,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
         rel: "stylesheet",
         href: "https://fonts.googleapis.com/css2?family=Rajdhani:wght@500;600;700&family=Inter:wght@400;600;700;800;900&display=swap",
       },
-      { rel: "icon", href: "/favicon.ico", type: "image/x-icon" },
+      { rel: "icon", href: "https://i.ibb.co/1Yh8PdLH/1000459066.png", type: "image/png" },
     ],
   }),
 
