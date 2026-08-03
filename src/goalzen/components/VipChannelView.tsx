@@ -23,12 +23,13 @@ export function VipChannelView({ hidden }: { hidden?: boolean }) {
     if (Array.isArray(rawLinks) && rawLinks.length > 0) {
       openLinks({
         name: ch.Name || ch.name || "VIP Channel",
-        logo: ch.Logo_url,
+        logo: ch.Logo_url || ch.logo,
+        isVip: true,
         stream_links: rawLinks.map((l: any) => ({
           name: l.name || l.title || "Server",
           link: l.link || l.Stream_url || l.Stream_link || "",
         })),
-      });
+      } as any);
     } else {
       playVipChannel(ch);
     }
@@ -128,7 +129,7 @@ export function VipChannelView({ hidden }: { hidden?: boolean }) {
             <ChannelCard
               key={`${ch.Name || ch.name}-${idx}`}
               name={ch.Name || ch.name || "VIP Channel"}
-              logo={ch.Logo_url}
+              logo={ch.Logo_url || ch.logo}
               onClick={() => handleChannelClick(ch)}
             />
           ))
