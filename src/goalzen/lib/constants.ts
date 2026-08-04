@@ -1,5 +1,5 @@
 export const API_URL =
-  "https://raw.githubusercontent.com/api00007/ALL-ROUNDER/refs/heads/main/FUSION.json";
+  "https://goalzen-api.bbz36891.workers.dev/developer&TG=Ivan-FluX/api=vsp_matches&ivan-flux007";
 
 export const HIGHLIGHTS_API = "https://highlights.bbz36891.workers.dev/api/videos/latest";
 
