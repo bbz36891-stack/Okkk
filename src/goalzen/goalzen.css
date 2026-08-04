@@ -1,11 +1,54 @@
 @import "./goalzen.base.css";
 
 /* ==========================================================================
-   DESKTOP LAYOUT FIXES (React refactor)
+   DESKTOP LAYOUT FIXES & PERFECT CENTERING
    ========================================================================== */
 
-/* --- 1. MATCH CENTER LEFT-SHIFT FIX: fully centered, fits desktop --------- */
+/* Centering main wrappers, headers, footers and containers */
+.main-wrapper,
+#main-page,
+#main-page > .container,
+.header-container,
+.main-footer-fusion,
+.fixed-bottom-nav {
+  margin-left: auto !important;
+  margin-right: auto !important;
+  box-sizing: border-box;
+}
+
+#main-page > .container {
+  width: 100%;
+  max-width: 600px;
+  padding-left: 15px;
+  padding-right: 15px;
+}
+
 @media (min-width: 768px) {
+  .main-wrapper,
+  #main-page,
+  .header-container,
+  .main-footer-fusion,
+  .fixed-bottom-nav {
+    max-width: 1200px !important;
+    width: 100% !important;
+  }
+
+  #main-page > .container {
+    max-width: 1200px !important;
+    padding-left: 20px !important;
+    padding-right: 20px !important;
+  }
+
+  #match-list-container,
+  #highlights-grid {
+    display: grid !important;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+    width: 100% !important;
+    box-sizing: border-box;
+  }
+
+  /* --- MATCH CENTER DESKTOP CENTERING --- */
   #details-page {
     left: 0 !important;
     right: 0 !important;
@@ -18,20 +61,16 @@
     transform: translate(0, 0) !important;
     visibility: visible;
   }
-  .dp-inner {
-    max-width: 1024px; /* max-w-5xl */
-    width: 100%;
-    margin: 0 auto;
-  }
+  .dp-inner,
   .dp-header-inner {
     max-width: 1024px;
     width: 100%;
-    margin: 0 auto;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
+    margin-left: auto !important;
+    margin-right: auto !important;
+    box-sizing: border-box;
   }
-  /* --- 4. HOME POSTER BANNER SCALING ------------------------------------- */
+
+  /* --- POSTER BANNER CENTERING --- */
   #poster-carousel-container {
     max-width: 900px !important;
     max-height: 380px !important;
@@ -40,6 +79,13 @@
   }
   #poster-slides-wrapper img {
     object-fit: cover !important;
+  }
+}
+
+@media (min-width: 1200px) {
+  #match-list-container,
+  #highlights-grid {
+    grid-template-columns: repeat(3, 1fr) !important;
   }
 }
 
@@ -52,7 +98,7 @@
   padding: 0 12px 30px 12px;
 }
 
-/* --- 3. HIGHLIGHTS COMMENTARY: stacked directly under tab content -------- */
+/* --- HIGHLIGHTS COMMENTARY & SCROLL --- */
 #hl-tab-content {
   flex: 0 0 auto !important;
 }
@@ -75,7 +121,7 @@
   }
 }
 
-/* misc helpers used by the React components */
+/* Misc helpers */
 .gz-hidden {
   display: none !important;
 }
@@ -97,38 +143,4 @@
 }
 .sidebar-cat-header i.rotated {
   transform: rotate(180deg);
-}
-
-/* --- DESKTOP CENTERING: keep the whole app centered on wide screens ------ */
-.main-wrapper,
-#main-page,
-#main-page > .container {
-  margin-left: auto !important;
-  margin-right: auto !important;
-  width: 100%;
-}
-#main-page > .container {
-  max-width: 600px;
-}
-@media (min-width: 768px) {
-  .main-wrapper,
-  #main-page,
-  #main-page > .container {
-    max-width: 1200px;
-  }
-  #main-page > .container {
-    max-width: 1200px !important;
-  }
-  .header-container,
-  .fixed-bottom-nav,
-  #footer-main {
-    margin-left: auto;
-    margin-right: auto;
-  }
-  #details-page {
-    left: 0 !important;
-    right: 0 !important;
-    margin-left: auto !important;
-    margin-right: auto !important;
-  }
 }
