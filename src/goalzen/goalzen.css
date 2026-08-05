@@ -39,12 +39,12 @@
     padding-right: 20px !important;
   }
 
-  #match-list-container,
-  #highlights-grid {
-    display: grid !important;
+  #match-list-container:not(.hidden-view),
+  #highlights-grid:not(.hidden-view) {
+    display: grid;
     grid-template-columns: repeat(2, 1fr);
     gap: 20px;
-    width: 100% !important;
+    width: 100%;
     box-sizing: border-box;
   }
 
@@ -83,9 +83,9 @@
 }
 
 @media (min-width: 1200px) {
-  #match-list-container,
-  #highlights-grid {
-    grid-template-columns: repeat(3, 1fr) !important;
+  #match-list-container:not(.hidden-view),
+  #highlights-grid:not(.hidden-view) {
+    grid-template-columns: repeat(3, 1fr);
   }
 }
 
@@ -143,4 +143,16 @@
 }
 .sidebar-cat-header i.rotated {
   transform: rotate(180deg);
+}
+
+/* ==========================================================================
+   STRICT VIEW HIDING FIX
+   ========================================================================== */
+.hidden-view,
+#main-page .hidden-view,
+#match-list-container.hidden-view,
+#highlights-view.hidden-view,
+#sports-channel-view.hidden-view,
+#vip-channel-view.hidden-view {
+  display: none !important;
 }
