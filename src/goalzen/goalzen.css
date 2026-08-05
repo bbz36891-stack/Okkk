@@ -156,3 +156,51 @@
 #vip-channel-view.hidden-view {
   display: none !important;
 }
+
+/* ==========================================================================
+   CHANNEL CARD TEXT CUTOFF FIX
+   ========================================================================== */
+.cat-card-square {
+  padding: 5px 2px !important;
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  justify-content: center !important;
+  overflow: hidden !important;
+}
+
+.cat-icon-circle {
+  width: 38px !important;
+  height: 38px !important;
+  min-width: 38px !important;
+  min-height: 38px !important;
+  margin-bottom: 3px !important;
+  padding: 3px !important;
+}
+
+.channel-name-wrapper {
+  width: 100% !important;
+  height: 20px !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  overflow: hidden !important;
+}
+
+.cat-name-sq {
+  font-size: 10px !important;
+  line-height: 1.1 !important;
+  font-weight: 600 !important;
+  color: #ffffff !important;
+  text-align: center !important;
+}
+
+@media (min-width: 768px) {
+  .cat-icon-circle {
+    width: 48px !important;
+    height: 48px !important;
+    min-width: 48px !important;
+    min-height: 48px !important;
+    margin-bottom: 5px !important;
+  }
+}
